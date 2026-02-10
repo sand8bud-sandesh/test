@@ -1,91 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>🧸 Happy Teddy Day , Sane </title>
+  <title>🧸 Teddy for You</title>
   <style>
     body {
       text-align: center;
       margin-top: 80px;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(#fff0f5, #ffe6ee);
-      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: #fff3f7;
     }
 
     h1 {
       color: #ff4d8d;
     }
 
+    button {
+      font-size: 20px;
+      padding: 12px 25px;
+      margin: 15px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      color: white;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .yes {
+      background: #ff4d8d;
+    }
+
+    .no {
+      background: #777;
+    }
+
     #teddy {
       font-size: 120px;
-      cursor: pointer;
-      animation: wiggle 1.5s infinite;
-    }
-
-    @keyframes wiggle {
-      0% { transform: rotate(0deg); }
-      25% { transform: rotate(5deg); }
-      50% { transform: rotate(0deg); }
-      75% { transform: rotate(-5deg); }
-      100% { transform: rotate(0deg); }
-    }
-
-    .heart {
-      position: absolute;
-      font-size: 20px;
-      animation: float 4s linear infinite;
-      color: #ff4d8d;
-    }
-
-    @keyframes float {
-      0% {
-        bottom: 0;
-        opacity: 1;
-        transform: translateX(0);
-      }
-      100% {
-        bottom: 100vh;
-        opacity: 0;
-        transform: translateX(-50px);
-      }
+      display: none;
+      margin-top: 20px;
     }
 
     #message {
-      margin-top: 20px;
       font-size: 24px;
+      margin-top: 20px;
       color: #444;
-      display: none;
     }
   </style>
 </head>
 <body>
 
-  <h1>Happy Teddy Day 🧸💖</h1>
-  <p>Catch your teddy!</p>
+  <h1 id="question">Here is your teddy, sane? 🧸💖</h1>
 
-  <div id="teddy" onclick="showLove()">🧸</div>
+  <button class="yes" onclick="yesClick()">Yes 😍</button>
+  <button class="no" onclick="noClick()">No 🙄</button>
 
-  <div id="message">
-    This teddy is a small gift,<br>
-    but my love for you is endless 💕<br>
-    Happy Teddy Day, my love 😘
-  </div>
+  <div id="teddy">🧸💝</div>
+  <div id="message"></div>
 
   <script>
-    function showLove() {
-      document.getElementById("message").style.display = "block";
+    function yesClick() {
+      document.getElementById("question").innerText = "Yayyy!! 🥰";
+      document.getElementById("teddy").style.display = "block";
+      document.getElementById("message").innerHTML =
+        "This teddy is for you 🤍<br>Whenever you miss me, hug it tight 🫂<br>Happy Teddy Day 😘";
+    }
 
-      for (let i = 0; i < 20; i++) {
-        let heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "💖";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 4000);
-      }
+    function noClick() {
+      document.getElementById("question").innerText =
+        "You're supposed to click YES 😢";
+      document.getElementById("message").innerText =
+        "Now I am sad... click yes and make me happy 🥺💔";
     }
   </script>
 
 </body>
 </html>
+
